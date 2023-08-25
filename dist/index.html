@@ -7,6 +7,31 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    
+    <form action="submit" id="excercise-form">
+        <div class="input-container">
+            <label for="email">Your email address</label>
+            <input type="email" name="email" id="email">
+            <div class="error"></div>
+        </div>
+        <div class="input-container">
+            <label for="country">Your country of residence</label>
+            <input type="text" name="country" id="country">
+        </div>
+        <div class="input-container">
+            <label for="country">Your ZIP code</label>
+            <input type="text" name="zip" id="zip">
+        </div>
+        <div class="input-container">
+            <label for="password">Create password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div class="input-container">
+            <label for="pwdConfirm">Confirm password</label>
+            <input type="password" name="pwdConfirm" id="pwdConfirm">
+        </div>
+        <div id="submitBtn">
+            <button>Submit Form</button>
+        </div>
+    </form>
 </body>
 </html>
