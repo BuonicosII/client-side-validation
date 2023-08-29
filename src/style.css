@@ -47,12 +47,30 @@ table {
 	border-spacing: 0;
 }
 
+@font-face {
+    font-family: 'MyFont';
+    src: url('./Montserrat-Medium.ttf');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+html {
+    font-family: 'MyFont';
+}
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+}
+
+input {
+    appearance: none;
+    border: solid 1px black;
+    padding: 0.3vh;
+    border-radius: 0.3vh;
 }
 
 #excercise-form {
@@ -71,7 +89,8 @@ body {
 .input-container {
     display: flex;
     flex-direction: column;
-    gap: 1vh;
+    gap: 2vh;
+    position: relative;
 }
 
 #submitBtn {
@@ -79,4 +98,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.error {
+    position: absolute;
+    top: 1.8vh;
+    color: red;
+    font-size: 0.7rem;
+}
+
+.invalid {
+    box-shadow: 0 0 5px red;
+}
+
+.valid {
+    box-shadow: 0 0 5px rgb(9, 255, 0);
 }
