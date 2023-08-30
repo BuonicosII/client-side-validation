@@ -33,6 +33,30 @@ for (const country of countries) {
 }
 
 //zipcode input field
+let zipInput = document.querySelector("#zip");
+
+zipInput.addEventListener("blur", ()=>{
+    if (zipInput.value.length > 0) {
+        let selectedCountryIndex = countries.findIndex(({ id }) => id === countryInput.value);
+        let countryRegexPattern = new RegExp(countries[selectedCountryIndex].regexPattern, "");
+        if (!countryRegexPattern.test(zipInput.value)) {
+            zipInput.nextElementSibling.innerHTML = `${countries[selectedCountryIndex].errorMsg}`;
+            zipInput.classList.add("invalid");
+        } else if (countryRegexPattern.test(zipInput.value)) {
+            zipInput.classList.add("valid");
+        }
+    }
+});
+
+zipInput.addEventListener("focusin", ()=>{
+    if (zipInput.hasAttribute("class", "invalid")) {
+        zipInput.classList.remove("invalid");
+        zipInput.nextElementSibling.innerHTML = ""
+    }
+    if (zipInput.hasAttribute("class", "valid")) {
+        zipInput.classList.remove("valid");
+    }
+})
 
 function formValidation (event) {
     event.preventDefault();
