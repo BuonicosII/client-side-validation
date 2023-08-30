@@ -1,5 +1,5 @@
 import './style.css';
-
+import { countries } from './countries';
 
 //email input field functions
 let email = document.querySelector("#email");
@@ -23,9 +23,22 @@ email.addEventListener("focusin", ()=>{
     }
 })
 
+//countries input field 
+let countryInput = document.querySelector("#country");
+for (const country of countries) {
+    let option = document.createElement("option");
+    option.setAttribute("value", `${country.id}`);
+    option.textContent =  `${country.id}`;
+    countryInput.appendChild(option);
+}
+
+//zipcode input field
 
 function formValidation (event) {
     event.preventDefault();
 
 
 }
+
+
+
