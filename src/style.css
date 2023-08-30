@@ -115,3 +115,16 @@ input, select {
 .valid {
     box-shadow: 0 0 5px rgb(9, 255, 0);
 }
+
+#submitBtn button {
+    appearance: none;
+    width: fit-content;
+    height: 4vh;
+    padding: 1vh;
+    background-color: rgb(2, 175, 2);
+    color: white;
+    border: 0px;
+    font-size: larger;
+    font-weight: 700;
+    border-radius: 1vh;
+}
