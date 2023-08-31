@@ -115,8 +115,42 @@ passwordConfirm.addEventListener("focusin", ()=>{
 function formValidation (event) {
     event.preventDefault();
 
+    if (email.value.length === 0) {
+        email.setCustomValidity("Email address is required");
+        email.reportValidity();
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) && email.value.length > 0 ) {
+        email.setCustomValidity("Insert a valid mail!");
+        email.reportValidity();
+    } else {
+        email.setCustomValidity("");
+        let selectedCountryIndex = countries.findIndex(({ id }) => id === countryInput.value);
+        let countryRegexPattern = new RegExp(countries[selectedCountryIndex].regexPattern, "");
+        if (zipInput.value.length === 0) {
+            zipInput.setCustomValidity("Zip Code Required");
+            zipInput.reportValidity();
+        } else if (!countryRegexPattern.test(zipInput.value)) {
+            zipInput.setCustomValidity(`${countries[selectedCountryIndex].errorMsg}`);
+            zipInput.reportValidity();
+        } else {
+            zipInput.setCustomValidity("");
+            if (password.value.length === 0) {
+                password.setCustomValidity("Password required");
+                password.reportValidity();
+            } else if (password.value.length > 0 && passwordConfirm.value.length === 0) {
+                passwordConfirm.setCustomValidity("Confirm your password");
+                passwordConfirm.reportValidity();
+            } else if (password.value.length > 0 && passwordConfirm.value.length > 0 && password.value !== passwordConfirm.value) {
+                passwordConfirm.setCustomValidity("The passwords must coincide!");
+                passwordConfirm.reportValidity();
+            } else {
+                alert("High Five!");
+            }
+        }
+    }
 
 }
 
+//submitBtn
 
-
+let submitBtn = document.querySelector("#submitBtn button");
+submitBtn.addEventListener("click", formValidation);
