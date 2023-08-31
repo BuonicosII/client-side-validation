@@ -58,6 +58,60 @@ zipInput.addEventListener("focusin", ()=>{
     }
 })
 
+//confirmPwd 
+let password = document.querySelector("#password");
+let passwordConfirm = document.querySelector("#pwdConfirm");
+
+password.addEventListener("blur", ()=>{
+    if (password.value.length > 0 && passwordConfirm.value.length > 0) {
+        if (password.value !== passwordConfirm.value) {
+            passwordConfirm.nextElementSibling.innerHTML = "The passwords must coincide!";
+            password.classList.add("invalid");
+            passwordConfirm.classList.add("invalid");
+        } else {
+            password.classList.add("valid");
+            passwordConfirm.classList.add("valid");
+        }
+    }
+});
+
+password.addEventListener("focusin", ()=>{
+    if (password.hasAttribute("class", "invalid")) {
+        passwordConfirm.nextElementSibling.innerHTML = "";
+        password.classList.remove("invalid");
+        passwordConfirm.classList.remove("invalid");
+    }
+    if (password.hasAttribute("class", "valid")) {
+        password.classList.remove("valid");
+        passwordConfirm.classList.remove("valid");
+    }
+});
+
+passwordConfirm.addEventListener("blur", ()=>{
+    if (password.value.length > 0 && passwordConfirm.value.length > 0) {
+        if (password.value !== passwordConfirm.value) {
+            passwordConfirm.nextElementSibling.innerHTML = "The passwords must coincide!";
+            password.classList.add("invalid");
+            passwordConfirm.classList.add("invalid");
+        } else {
+            password.classList.add("valid");
+            passwordConfirm.classList.add("valid");
+        }
+    }
+});
+
+passwordConfirm.addEventListener("focusin", ()=>{
+    if (passwordConfirm.hasAttribute("class", "invalid")) {
+        passwordConfirm.nextElementSibling.innerHTML = "";
+        password.classList.remove("invalid");
+        passwordConfirm.classList.remove("invalid");
+    }
+    if (passwordConfirm.hasAttribute("class", "valid")) {
+        password.classList.remove("valid");
+        passwordConfirm.classList.remove("valid");
+    }
+});
+
 function formValidation (event) {
     event.preventDefault();
 
